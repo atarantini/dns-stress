@@ -1,28 +1,33 @@
 var dns = require('dns');
 
-/* Function taken from http://scriptar.com/JavaScript/permute.html */
-var wordlist = [], usedChars = [];
-function permute(input) {
-  var i, ch, chars = input.split("");
-  for (i = 0; i < chars.length; i++) {
-    ch = chars.splice(i, 1);
-    usedChars.push(ch);
-    if (chars.length == 0) wordlist[wordlist.length] = usedChars.join("");
-    permute(chars.join(""));
-    chars.splice(i, 0, ch);
-    usedChars.pop();
-  }
+// Config
+var tld = ".com.ar";	// Top level domain (TLD)
+var seed = 'abcd';		// Input string to iterate/permute/generate words
+
+// Make seed permutations to generate wordlist
+var wordlist = []
+function permutate(permutation, seed) {
+	if (seed.length == 0) {
+		//console.log(permutation);
+		if(wordlist.indexOf(permutation) == -1) { wordlist[wordlist.length] = permutation; }
+		return;
+	}
+	for (var i = 0; i < seed.length; i++) {
+		permutate(permutation + seed.charAt(i), seed.substring(0, i) + seed.substring(i+1, seed.length));
+	}
+	for (var i = permutation.length; i > 0; i--) { permutate("", permutation.substring(0, i)); }
 }
+permutate("", seed);
 
-permute('abcd');
-//console.log(wordlist);
-
+// Loop wordlist and try to resolv each domain
+console.log('Requesting '+wordlist.length+' domains...');
 wordlist.forEach(function(word) {
-	dns.resolve4(word+'.com.ar', function(err, addresses) {
+	var domain = word+tld;
+	dns.resolve4(domain, function(err, addresses) {
 		if (err) {
 			//throw err;
 		} else {
-			console.log(word+'.com.ar : '+JSON.stringify(addresses));
+			console.log(domain+' : '+JSON.stringify(addresses));
 		}
 	});
 });
