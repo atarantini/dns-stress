@@ -7,23 +7,29 @@ With dns-stress you can guess domains and stress your current DNS server. It's s
 Usage
 ^^^^^
 
-Download or clone source, uncompress and edit with a text editor (yes, since I'm new to this stuff no command line arguments can be passed: sorry!) and modify the `// Config` section. Then run the script::
+Download or clone source, uncompress and run the script with the --help argument for documentation::
 
-	$ node dns-stress.js
+	$ ./dns-stress.js --help
 
-A sample output with ".com.ar" TLD can be like this::
+	  Options:
 
-db.com.ar : ["205.251.152.178"]
-bcda.com.ar : ["50.28.1.112"]
-bcd.com.ar : ["208.76.83.152"]
-d.com.ar : ["107.22.168.59"]
-db.com.ar : ["201.212.0.94"]
-cd.com.ar : ["173.230.128.100"]
-bdc.com.ar : ["201.212.0.94"]
-dcb.com.ar : ["200.58.115.152"]
-dab.com.ar : ["200.51.197.79"]
-cda.com.ar : ["190.228.29.81"]
-bd.com.ar : ["82.98.86.167"]
+    -h, --help              output usage information
+    -V, --version           output the version number
+    -c, --charset <string>  Charset seed (default: abcde)
+    --tld <string>          Top level domain (default: .com)
+
+  Examples:
+
+    Requesting domains ab.com.ar, a.com.ar, ba.com.ar and b.com.ar
+
+      $ ./dns-stress --tld .com.ar --charset ab
+
+
+A sample output with ".com.ar" TLD and abc charset can look like this::
+
+	a.com.ar : ["190.228.29.81"]
+	b.com.ar : ["190.228.29.82"]
+	ba.com.ar : ["200.63.16.241"]
 
 Author
 ^^^^^^
