@@ -16,7 +16,11 @@ cli.version('0.0.1')
 		console.log('');
 		console.log('    Requesting domains ab.com.ar, a.com.ar, ba.com.ar and b.com.ar');
 		console.log('');
-		console.log('      $ ./dns-stress --tld .com.ar --charset abc');
+		console.log('      $ node dns-stress.js --tld .com.ar --charset abc');
+		console.log('');
+		console.log('      or');
+		console.log('');
+		console.log('      $ ./dns-stress.js --tld .com.ar --charset abc');
 		console.log('');
 	})
 	.parse(process.argv);
