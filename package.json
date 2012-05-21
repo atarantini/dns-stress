@@ -1,0 +1,7 @@
+{
+	"name": "dns-stress",
+	"version": "0.0.1",
+	"dependencies": {
+		"commander": "0.6.x"
+	}
+}
