@@ -2,7 +2,7 @@
  dns-stress
 ============
 
-With dns-stress you can guess/discovery domains and stress your current DNS server. It's sound a bit useless but is a good way for me to learn about JavaScript, NodeJS and networking.
+With dns-stress you can guess/discovery domains and stress your current DNS server. It sounds a bit useless, but was a good way for me to learn about JavaScript, NodeJS and networking.
 
 Usage
 ^^^^^
@@ -41,4 +41,4 @@ Andres I. Tarantini (atarantini@gmail.com)
 License
 ^^^^^^^
 
-This code is free software and that stuff. The complete license will be included in this software some day.
+This code is released under the GNU General Public License V3, see COPING file for a complete copy of the license.
